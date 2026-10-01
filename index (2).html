@@ -1,0 +1,464 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>مشاريع منزلية تبسة | TEBESSA</title>
+<style>
+  :root{--olive:#3F4A1F;--stone:#F3F1EA;--honey:#C58A1B;--line:#D9D5C6;--ink:#1E2210}
+  *{box-sizing:border-box}
+  body{margin:0;font-family:Tahoma,Arial,sans-serif;background:var(--stone);color:var(--ink);line-height:1.7}
+  header{background:var(--olive);color:#fff;padding:12px 14px;display:flex;justify-content:space-between;align-items:center;gap:8px}
+  .brand{min-width:0}.brand b{display:block;font-size:17px;line-height:1.3}.brand span{font-size:12px;letter-spacing:3px;opacity:.8}
+  .hb{display:flex;gap:6px;flex-shrink:0}
+  .btn{display:inline-block;padding:10px 16px;border-radius:8px;text-decoration:none;border:0;cursor:pointer;font:inherit;font-weight:700}
+  .sm{padding:8px 12px;font-size:14px}
+  .honey{background:var(--honey);color:#1E1500}
+  .ghost{background:#fff;color:var(--olive);border:1.5px solid var(--olive)}
+  .red{background:#fff;color:#9B2C2C;border:1.5px solid #9B2C2C}
+  .hero{padding:28px 18px 10px;max-width:900px;margin:0 auto}
+  h1{font-size:26px;color:var(--olive);margin:0 0 6px;line-height:1.4}
+  .hero p{margin:0 0 16px;color:#4b5133}
+  #q{width:100%;padding:15px;border:1.5px solid var(--line);border-radius:10px;font:inherit;font-size:17px}
+  #q:focus,.btn:focus-visible,select:focus{outline:3px solid var(--honey)}
+  select{padding:10px;border:1.5px solid var(--line);border-radius:8px;font:inherit;margin-top:10px;background:#fff;max-width:100%}
+  #list{max-width:900px;margin:18px auto 60px;padding:0 18px;display:grid;gap:14px}
+  .card{background:#fff;border:1.5px solid var(--line);border-radius:12px;padding:16px}
+  .card.featured{border:2.5px solid var(--honey)}
+  .top{display:flex;justify-content:space-between;align-items:start;gap:10px}
+  .card h2{margin:0;font-size:20px}
+  .cat{color:#6a6f52;font-size:14px}
+  .badge{background:var(--honey);color:#1E1500;border-radius:20px;padding:2px 12px;font-size:13px;font-weight:700;white-space:nowrap}
+  .products{display:flex;gap:10px;overflow-x:auto;margin:12px 0;padding-bottom:4px}
+  .p{flex:0 0 120px;text-align:center;font-size:14px}
+  .p .img{width:120px;height:120px;border-radius:10px;background:#E8E4D4;display:flex;align-items:center;justify-content:center;font-size:44px;overflow:hidden}
+  .p .img img{width:100%;height:100%;object-fit:cover}
+  .p small{color:#6a6f52;display:block}
+  .plain{font-size:14px;color:#4b5133;margin:8px 0}
+  .actions{display:flex;gap:8px;flex-wrap:wrap;margin-top:10px}
+  .empty{text-align:center;padding:40px;color:#6a6f52}
+  .cats{max-width:900px;margin:18px auto 0;padding:0 18px}
+  .cats h3{margin:0 0 10px;color:var(--olive)}
+  .catgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(130px,1fr));gap:10px}
+  .cc{background:#fff;border:1.5px solid var(--line);border-radius:12px;padding:12px 8px;text-align:center;cursor:pointer;font:inherit;color:var(--ink)}
+  .cc .ic{font-size:30px;display:block}
+  .cc b{display:block;font-size:14px;line-height:1.4;margin:4px 0 2px}
+  .cc small{color:#6a6f52}
+  .cc.on{border:2.5px solid var(--honey);background:#FFF9E8}
+  .cc:focus-visible{outline:3px solid var(--honey)}
+  .admin{background:#FFF4D6;border-bottom:2px solid var(--honey);padding:10px 18px;font-size:14px;display:none;justify-content:space-between;gap:10px;align-items:center}
+  .adminbox{border-top:1px dashed var(--honey);margin-top:12px;padding-top:10px;display:flex;gap:8px;flex-wrap:wrap;align-items:center;font-size:14px}
+  #toast{position:fixed;bottom:18px;left:50%;transform:translateX(-50%);background:var(--ink);color:#fff;padding:12px 18px;border-radius:8px;display:none;max-width:90%;z-index:9}
+  dialog{width:94%;max-width:480px;max-height:92vh;border:0;border-radius:14px;padding:0;background:var(--stone);color:var(--ink);font-family:inherit}
+  dialog::backdrop{background:rgba(20,24,8,.6)}
+  .fh{background:var(--olive);color:#fff;padding:14px 18px;display:flex;justify-content:space-between;align-items:center;position:sticky;top:0;z-index:1}
+  .fh b{font-size:18px}
+  .fm{padding:6px 18px 22px}
+  .fm label.l{display:block;font-weight:700;margin:14px 0 5px}
+  .fm input:not([type=file]),.fm select,.fm textarea{width:100%;padding:12px;border:1.5px solid var(--line);border-radius:8px;font:inherit;background:#fff;margin-top:0}
+  .fm input:focus,.fm select:focus,.fm textarea:focus{outline:3px solid var(--honey)}
+  .swap{display:inline-block;margin-top:12px;color:var(--olive);font-weight:700;text-decoration:underline}
+  .opt{font-weight:400;color:#6a6f52;font-size:13px}
+  .prow{display:flex;gap:10px;margin-bottom:10px;align-items:stretch}
+  .pic{flex:0 0 76px;height:76px;border:2px dashed var(--line);border-radius:10px;background:#fff center/cover no-repeat;display:flex;align-items:center;justify-content:center;font-size:26px;cursor:pointer}
+  .pf{flex:1;display:grid;gap:6px}
+  #fdone{display:none;background:#E4EDCB;color:var(--olive);padding:12px;border-radius:8px;margin-top:14px;font-weight:700}
+  #bcode{direction:ltr;text-align:center;letter-spacing:2px;font-size:18px;text-transform:uppercase}
+  .price{background:var(--olive);color:#fff;border-radius:12px;padding:16px;margin:14px 0}
+  .price b{font-size:30px;color:#F2C66A}
+  #bwa{display:block;text-align:center;margin-top:12px}
+  .fm hr{border:0;border-top:1px solid var(--line);margin:22px 0 4px}
+  #bmsg{display:none;margin-top:14px;padding:12px;border-radius:8px;font-weight:700}
+  #bmsg.ok{background:#E4EDCB;color:var(--olive)}
+  #bmsg.err{background:#F7DEDE;color:#9B2C2C}
+  footer{background:var(--olive);color:#fff;padding:26px 18px 30px;margin-top:10px}
+  .fw{max-width:900px;margin:0 auto}
+  .safe{background:rgba(255,255,255,.1);border:1.5px solid var(--honey);border-radius:12px;padding:16px;margin-bottom:16px}
+  .safe b{display:block;font-size:17px;margin-bottom:4px;color:#F2C66A}
+  .safe p{margin:0 0 12px}
+  footer details{border-top:1px solid rgba(255,255,255,.25);padding:10px 0}
+  footer summary{cursor:pointer;font-weight:700}
+  footer summary:focus-visible{outline:3px solid var(--honey)}
+  .fx{white-space:pre-line;margin:8px 0 0;font-size:14px;opacity:.95}
+  .copy{margin-top:14px;font-size:12px;opacity:.7;text-align:center}
+  .rep{align-self:center;font-size:13px;color:#6a6f52;text-decoration:underline;margin-inline-start:auto}
+</style>
+</head>
+<body>
+<div class="admin" id="adminbar"><span>وضع المدير: الأزرار أسفل كل مشروع تظهر لك وحدك.</span><button class="btn ghost" id="logout">خروج</button></div>
+<header>
+  <div class="brand"><b data-i="brand"></b><span>TEBESSA</span></div>
+  <div class="hb">
+    <button id="langBtn" class="btn ghost sm" aria-label="Langue / اللغة"></button>
+    <button id="joinBtn" class="btn honey sm" data-i="join"></button>
+  </div>
+</header>
+
+<section class="hero">
+  <h1 data-i="h1"></h1>
+  <p data-i="sub"></p>
+  <input id="q" type="search" data-ph="ph_q" autocomplete="off">
+  <select id="cat"></select>
+</section>
+
+<section class="cats"><h3 data-i="cats"></h3><div class="catgrid" id="cats"></div></section>
+<section id="list" aria-live="polite"></section>
+
+<footer>
+  <div class="fw">
+    <div class="safe"><b data-i="f_safe_t"></b><p data-i="f_safe"></p>
+      <a id="compBtn" class="btn honey" href="#" target="_blank" rel="noopener" data-i="f_comp"></a></div>
+    <details><summary data-i="f_terms_t"></summary><p class="fx" data-i="f_terms"></p></details>
+    <details><summary data-i="f_priv_t"></summary><p class="fx" data-i="f_priv"></p></details>
+    <div class="copy">© 2026 <span data-i="brand"></span> · TEBESSA</div>
+  </div>
+</footer>
+
+<dialog id="regDlg">
+  <div class="fh"><b data-i="join"></b><button type="button" class="btn ghost sm" id="fclose" data-i="close"></button></div>
+  <form id="regForm" class="fm">
+    <a href="#" id="r2b" class="swap" data-i="goBoost"></a>
+    <label class="l" for="fname"><span data-i="f_name"></span></label>
+    <input id="fname" required maxlength="60">
+    <label class="l" for="fcat"><span data-i="f_cat"></span></label>
+    <select id="fcat" required></select>
+    <label class="l" for="fdesc"><span data-i="f_desc"></span> <span class="opt" data-i="opt"></span></label>
+    <textarea id="fdesc" rows="2" maxlength="160"></textarea>
+    <label class="l"><span data-i="f_prods"></span> <span class="opt" data-i="f_hint"></span></label>
+    <div id="fprods"></div>
+    <label class="l" for="fphone"><span data-i="f_phone"></span></label>
+    <input id="fphone" type="tel" inputmode="tel" required placeholder="05XXXXXXXX">
+    <label class="l" for="ffb"><span data-i="f_fb"></span> <span class="opt" data-i="optfb"></span></label>
+    <input id="ffb" type="url" placeholder="https://facebook.com/...">
+    <label class="l" for="fdel"><span data-i="f_del"></span></label>
+    <select id="fdel"><option value="no" data-i="no"></option><option value="yes" data-i="yes"></option></select>
+    <div id="fareasWrap" style="display:none">
+      <label class="l" for="fareas"><span data-i="f_areas"></span></label>
+      <input id="fareas" maxlength="100" data-ph="ph_areas">
+    </div>
+    <button type="submit" class="btn honey" style="width:100%;margin-top:18px" data-i="f_send"></button>
+    <div id="fdone" role="status"></div>
+  </form>
+</dialog>
+
+<dialog id="boostDlg">
+  <div class="fh"><b data-i="b_title"></b><button type="button" class="btn ghost sm" id="bclose" data-i="close"></button></div>
+  <form id="boostForm" class="fm">
+    <a href="#" id="b2r" class="swap" data-i="goReg"></a>
+    <div class="price"><span data-i="b_offer"></span><br><b data-i="b_price"></b> <span data-i="b_days"></span></div>
+    <label class="l" for="bproj"><span data-i="b_proj"></span></label>
+    <select id="bproj"></select>
+    <a id="bwa" class="btn ghost" href="#" target="_blank" rel="noopener" data-i="b_ask"></a>
+    <hr>
+    <label class="l" for="bcode"><span data-i="b_have"></span></label>
+    <input id="bcode" autocomplete="off" placeholder="TB-XXXX-XXXX-XXXX" maxlength="20">
+    <button type="submit" class="btn honey" style="width:100%;margin-top:14px" data-i="b_go"></button>
+    <div id="bmsg" role="status"></div>
+  </form>
+</dialog>
+
+<div id="toast" role="status"></div>
+
+<!-- ===== بيانات المشاريع: أضف مشروعًا بنسخ كتلة {...} وتعديلها. featured_until يملؤه زر المدير تلقائيًا. facebook اختياري ===== -->
+<script id="data" type="application/json">
+[]
+</script>
+<script id="codes" type="application/json">{}</script>
+
+<script>
+  // ===== عدّل هذه القيم =====
+  const WHATSAPP_NUMBER = "213773770578";      // رقمك بصيغة دولية بدون +
+  const CFG = { owner: "safd2567-cloud", repo: "tebessa", branch: "main", file: "index.html" };
+  // ==========================
+
+  const $ = id => document.getElementById(id);
+  const esc = s => String(s || "").replace(/[&<>"]/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+  const PROJECTS = JSON.parse($("data").textContent);
+  const store = (k, v) => { try { v === null ? localStorage.removeItem(k) : localStorage.setItem(k, v); } catch (e) {} };
+  const load = k => { try { return localStorage.getItem(k); } catch (e) { return null; } };
+  const localUntil = id => { try { return JSON.parse(localStorage.getItem("boost") || "{}")[id] || ""; } catch (e) { return ""; } };
+  const isFeatured = p => [p.featured_until, localUntil(p.id)].some(d => d && new Date(d + "T23:59:59") >= new Date());
+
+  // ===== الفئات: [العربية, الأيقونة, الفرنسية] =====
+  const CATS = [
+    ["أثاث وأجهزة منزلية مستعملة","🛋️","Meubles et électroménager d'occasion"], ["حلويات محلية","🍮","Pâtisseries locales"],
+    ["زيت الزيتون","🫒","Huile d'olive"], ["فواكه مجففة","🍇","Fruits secs"],
+    ["حليب الأبقار والماعز","🥛","Lait de vache et de chèvre"], ["البيض","🥚","Œufs"],
+    ["توزيعات المناسبات","🎁","Souvenirs et dragées d'événements"], ["طعام تقليدي منزلي","🍲","Cuisine traditionnelle maison"],
+    ["ديكور الجبس والطين","🏺","Décoration en plâtre et en argile"], ["خياطة وطرز حسب الطلب","🧵","Couture et broderie sur commande"],
+    ["كيك وحلويات حسب الطلب","🎂","Gâteaux et pâtisseries sur commande"], ["هدايا وورود","💐","Cadeaux et fleurs"],
+    ["منتجات يدوية","🧶","Produits artisanaux"], ["فخار وصناعات تقليدية","🪔","Poterie et artisanat traditionnel"],
+    ["ملابس ومنتجات حسب الطلب","👗","Vêtements et produits sur commande"], ["عسل طبيعي ومنتجات النحل","🍯","Miel naturel et produits de la ruche"]
+  ];
+
+  // ===== النصوص: عربي / فرنسي =====
+  const I = {
+    ar: {
+      f_safe_t:"نصيحة قبل أي عملية شراء",
+      f_safe:"لا تدفع أي مبلغ قبل أن تتفق جيدًا مع البائع على المنتج والسعر والتوصيل والاستلام، وتحقق من المنتج قبل الدفع كلما أمكن.",
+      f_comp:"قدّم شكوى عبر واتساب", report:"إبلاغ",
+      wa_comp:"السلام عليكم، أريد تقديم شكوى.\nاسم البائع: \nتفاصيل الشكوى: ",
+      wa_rep:n => `السلام عليكم، أريد تقديم شكوى بخصوص البائع «${n}».\nالتفاصيل: `,
+      f_terms_t:"شروط الاستخدام وإخلاء المسؤولية",
+      f_terms:"المنصة وسيلة لعرض المشاريع والتواصل بين البائع والمشتري فقط، وليست طرفًا في أي عملية بيع أو دفع.\nلا تتحمل المنصة أي مسؤولية عن أي غش أو كذب أو سرقة أو احتيال أو خلاف ينشأ بين البائع والمشتري، ولا تضمن صحة المعلومات والأسعار والصور التي ينشرها البائعون. البائع وحده مسؤول عن محتوى صفحته.\nيُمنع نشر منتجات غير قانونية، أو صور بدون إذن أصحابها، أو معلومات مضللة، أو إعلانات كاذبة.\nيحق للمنصة، بعد مراجعة أي شكوى، إيقاف أو حذف حساب البائع المخالف.",
+      f_priv_t:"سياسة الخصوصية",
+      f_priv:"لا نجمع إلا المعلومات التي يرسلها البائع عند التسجيل: الاسم والفئة والوصف والمنتجات والصور ورقم الهاتف وصفحة فيسبوك. هذه المعلومات تُنشر في صفحة البائع ويراها الزوار.\nلا نبيع بياناتك ولا نشاركها مع أي جهة. وتصفّح الموقع لا يتطلب إنشاء حساب.",
+      brand:"مشاريع منزلية تبسة", join:"سجّل مشروعك", close:"إغلاق", h1:"اكتشف مشاريع ومنتجات تبسة",
+      sub:"ابحث عن المنتجات التي تحتاجها وتواصل مباشرة مع أصحاب المشاريع المحلية.",
+      ph_q:"ابحث عن منتج أو مشروع...", allcats:"كل الفئات", cats:"الفئات", pick:"اختر الفئة",
+      sell:n => n === 1 ? "1 بائع" : n + " بائعين", feat:"مميز", prods:"المنتجات:", deliv:"التوصيل:", yes:"متوفر", no:"غير متوفر",
+      call:"اتصال", fb:"فيسبوك", empty:"لا توجد نتائج. جرّب كلمة أخرى.", none:"لا يوجد بائعون بعد. كن أول من يسجّل مشروعه!",
+      goBoost:"أنت بائع مسجّل؟ الظهور المميز ←", goReg:"→ تسجيل مشروع جديد",
+      f_name:"اسم البائع", f_cat:"الفئة", f_desc:"وصف قصير", opt:"(اختياري)", f_prods:"المنتجات", f_hint:"(اضغط على 📷 لاختيار صورة المنتج)",
+      ph_pn:"اسم المنتج", ph_pp:"السعر (مثال: 1200 دج)", f_phone:"رقم الهاتف", f_fb:"صفحة فيسبوك", optfb:"(إن وُجدت)",
+      f_del:"التوصيل", f_areas:"مناطق التوصيل", ph_areas:"مثال: تبسة المدينة، بئر العاتر", f_send:"إرسال الطلب عبر واتساب",
+      alertProd:"أضف منتجًا واحدًا على الأقل.",
+      done:n => "فُتح واتساب برسالتك. اضغط إرسال هناك" + (n ? "، ثم أرفق صور منتجاتك (" + n + ") في المحادثة نفسها." : "."),
+      b_title:"الظهور المميز", b_offer:"عرض ترويجي", b_price:"100 دج", b_days:"لمدة 30 يومًا", b_proj:"اسم البائع",
+      b_ask:"اطلب الكود عبر واتساب", b_have:"لديك كود؟ أدخله هنا", b_go:"فعّل الباقة",
+      b_many:"محاولات خاطئة كثيرة. حاول لاحقًا.", b_wrong:"الكود غير صحيح.", b_used:"هذا الكود استُعمل من قبل.",
+      b_ok:d => "تم التفعيل حتى " + d + ". يظهر مشروعك مميزًا في المقدمة على جهازك."
+    },
+    fr: {
+      f_safe_t:"Conseil avant tout achat",
+      f_safe:"Ne payez rien avant de vous être bien mis d'accord avec le vendeur sur le produit, le prix, la livraison et la remise. Vérifiez le produit avant de payer chaque fois que possible.",
+      f_comp:"Déposer une plainte sur WhatsApp", report:"Signaler",
+      wa_comp:"Bonjour, je souhaite déposer une plainte.\nNom du vendeur : \nDétails de la plainte : ",
+      wa_rep:n => `Bonjour, je souhaite déposer une plainte concernant le vendeur « ${n} ».\nDétails : `,
+      f_terms_t:"Conditions d'utilisation et clause de non-responsabilité",
+      f_terms:"La plateforme est un simple moyen de présenter des projets et de mettre en relation vendeurs et acheteurs. Elle n'est partie à aucune vente ni aucun paiement.\nElle décline toute responsabilité en cas de fraude, mensonge, vol, escroquerie ou litige entre vendeur et acheteur, et ne garantit pas l'exactitude des informations, prix et photos publiés. Chaque vendeur est seul responsable du contenu de sa page.\nSont interdits : produits illégaux, photos utilisées sans autorisation, informations trompeuses, publicités mensongères.\nAprès examen d'une plainte, la plateforme peut suspendre ou supprimer le compte contrevenant.",
+      f_priv_t:"Politique de confidentialité",
+      f_priv:"Nous ne collectons que les informations envoyées par le vendeur lors de l'inscription : nom, catégorie, description, produits, photos, numéro de téléphone et page Facebook. Elles sont publiées sur la page du vendeur et visibles par les visiteurs.\nNous ne vendons ni ne partageons vos données avec des tiers. Consulter le site ne nécessite aucun compte.",
+      brand:"Projets maison Tébessa", join:"Inscrire mon projet", close:"Fermer", h1:"Découvrez les projets et produits de Tébessa",
+      sub:"Trouvez les produits qu'il vous faut et contactez directement les porteurs de projets locaux.",
+      ph_q:"Rechercher un produit ou un projet...", allcats:"Toutes les catégories", cats:"Catégories", pick:"Choisir la catégorie",
+      sell:n => n <= 1 ? n + " vendeur" : n + " vendeurs", feat:"En vedette", prods:"Produits :", deliv:"Livraison :", yes:"Disponible", no:"Non disponible",
+      call:"Appeler", fb:"Facebook", empty:"Aucun résultat. Essayez un autre mot.", none:"Aucun vendeur pour le moment. Soyez le premier à inscrire votre projet !",
+      goBoost:"Vous êtes vendeur inscrit ? Mise en avant →", goReg:"← Inscrire un nouveau projet",
+      f_name:"Nom du vendeur", f_cat:"Catégorie", f_desc:"Courte description", opt:"(facultatif)", f_prods:"Produits", f_hint:"(touchez 📷 pour choisir la photo)",
+      ph_pn:"Nom du produit", ph_pp:"Prix (ex. : 1200 DA)", f_phone:"Numéro de téléphone", f_fb:"Page Facebook", optfb:"(si elle existe)",
+      f_del:"Livraison", f_areas:"Zones de livraison", ph_areas:"ex. : Tébessa ville, Bir El Ater", f_send:"Envoyer la demande via WhatsApp",
+      alertProd:"Ajoutez au moins un produit.",
+      done:n => "WhatsApp s'est ouvert avec votre message. Appuyez sur Envoyer" + (n ? ", puis joignez vos photos de produits (" + n + ") dans la même conversation." : "."),
+      b_title:"Mise en avant", b_offer:"Offre promotionnelle", b_price:"100 DA", b_days:"pendant 30 jours", b_proj:"Nom du vendeur",
+      b_ask:"Demander le code via WhatsApp", b_have:"Vous avez un code ? Saisissez-le ici", b_go:"Activer l'offre",
+      b_many:"Trop de tentatives erronées. Réessayez plus tard.", b_wrong:"Code incorrect.", b_used:"Ce code a déjà été utilisé.",
+      b_ok:d => "Activé jusqu'au " + d + ". Votre projet apparaît en tête de liste sur votre appareil."
+    }
+  };
+  let lang = load("lang") === "fr" ? "fr" : "ar";
+  const tr = () => I[lang];
+  const cname = c => { const x = CATS.find(k => k[0] === c); return x ? (lang === "ar" ? x[0] : x[2]) : c; };
+
+  // --- وضع المدير: افتح الموقع مرة واحدة بالرابط ...index.html#admin وأدخل رمز GitHub ---
+  if (location.hash === "#admin" && !load("gh_token")) {
+    const t = prompt("أدخل رمز GitHub الخاص بك (يُحفظ في متصفحك أنت فقط):");
+    if (t) store("gh_token", t.trim());
+    history.replaceState(null, "", location.pathname);
+  }
+  const admin = !!load("gh_token");
+  if (admin) $("adminbar").style.display = "flex";
+  $("logout").onclick = () => { store("gh_token", null); location.reload(); };
+  function toast(t) { const e = $("toast"); e.textContent = t; e.style.display = "block"; clearTimeout(toast.t); toast.t = setTimeout(() => e.style.display = "none", 5000); }
+
+  const DATA_RE = /(<script id="data" type="application\/json">)([\s\S]*?)(<\/script>)/;
+  const CODES_RE = /(<script id="codes" type="application\/json">)([\s\S]*?)(<\/script>)/;
+  async function editFile(msg, fn) {
+    const api = `https://api.github.com/repos/${CFG.owner}/${CFG.repo}/contents/${CFG.file}`;
+    const h = { Authorization: "Bearer " + load("gh_token"), Accept: "application/vnd.github+json" };
+    const r = await fetch(api + "?ref=" + CFG.branch, { headers: h, cache: "no-store" });
+    if (!r.ok) throw new Error(r.status === 401 ? "الرمز غير صحيح أو منتهي." : "تعذّرت قراءة الملف من GitHub.");
+    const f = await r.json();
+    const src = new TextDecoder().decode(Uint8Array.from(atob(f.content.replace(/\n/g, "")), c => c.charCodeAt(0)));
+    const m = src.match(DATA_RE), cm = src.match(CODES_RE);
+    if (!m || !cm) throw new Error("لم أجد كتلة البيانات في الملف.");
+    const data = JSON.parse(m[2]), codes = JSON.parse(cm[2]);
+    const result = fn(data, codes);
+    const out = src.replace(m[0], () => m[1] + "\n" + JSON.stringify(data, null, 1) + "\n" + m[3])
+                   .replace(cm[0], () => cm[1] + JSON.stringify(codes) + cm[3]);
+    let bin = ""; new TextEncoder().encode(out).forEach(b => bin += String.fromCharCode(b));
+    const put = await fetch(api, { method: "PUT", headers: h, body: JSON.stringify({ message: msg, content: btoa(bin), sha: f.sha, branch: CFG.branch }) });
+    if (!put.ok) throw new Error("تعذّر الحفظ في GitHub (تأكد من صلاحية الرمز).");
+    return result;
+  }
+  const setFeatured = (id, on) => editFile((on ? "تفعيل التمييز: " : "إيقاف التمييز: ") + id, data => {
+    const p = data.find(x => x.id === id);
+    if (!p) throw new Error("المشروع غير موجود في الملف المنشور.");
+    if (on) {
+      const now = new Date(), cur = p.featured_until ? new Date(p.featured_until + "T23:59:59") : null;
+      const base = cur && cur > now ? cur : now;
+      base.setDate(base.getDate() + 30);
+      p.featured_until = base.toISOString().slice(0, 10);
+    } else p.featured_until = "";
+    return p.featured_until;
+  });
+  async function deleteSeller(id, btn) {
+    const p = PROJECTS.find(x => x.id === id); if (!p) return;
+    if (!confirm("بعد مراجعة الشكوى: هل تريد حذف البائع «" + p.name + "» نهائيًا من الموقع؟")) return;
+    btn.disabled = true;
+    try {
+      await editFile("حذف بائع: " + id, data => {
+        const i = data.findIndex(x => x.id === id);
+        if (i < 0) throw new Error("البائع غير موجود في الملف المنشور.");
+        data.splice(i, 1);
+      });
+      PROJECTS.splice(PROJECTS.indexOf(p), 1);
+      $("bproj").innerHTML = PROJECTS.map(x => `<option value="${esc(x.id)}">${esc(x.name)}</option>`).join("");
+      render();
+      toast("تم حذف البائع. يختفي من الموقع خلال دقيقة تقريبًا.");
+    } catch (e) { btn.disabled = false; toast(e.message || "حدث خطأ."); }
+  }
+  async function issueCode(id, btn) {
+    btn.disabled = true;
+    try {
+      const A = "ABCDEFGHJKLMNPQRSTUVWXYZ23456789";
+      const ch = [...crypto.getRandomValues(new Uint8Array(12))].map(x => A[x % A.length]).join("");
+      const code = `TB-${ch.slice(0, 4)}-${ch.slice(4, 8)}-${ch.slice(8, 12)}`;
+      const hh = await sha256(id + ":" + code);
+      await editFile("إصدار كود: " + id, (d, c) => { c[hh] = new Date().toISOString().slice(0, 10); });
+      CODES[hh] = 1;
+      try { await navigator.clipboard.writeText(code); } catch (e) {}
+      prompt("تم إصدار الكود لهذا البائع وحده. أرسله له (نُسخ تلقائيًا):", code);
+    } catch (e) { toast(e.message || "حدث خطأ."); }
+    btn.disabled = false;
+  }
+  async function toggle(id, on, btn) {
+    btn.disabled = true;
+    try {
+      const until = await setFeatured(id, on);
+      PROJECTS.find(x => x.id === id).featured_until = until;
+      render();
+      toast(on ? "تم التفعيل حتى " + until + ". يظهر للزوار خلال دقيقة تقريبًا." : "تم إيقاف التمييز. يختفي للزوار خلال دقيقة تقريبًا.");
+    } catch (e) { btn.disabled = false; toast(e.message || "حدث خطأ."); }
+  }
+
+  // ===== الفئات والبحث والعرض =====
+  function buildCats() {
+    const cv = $("cat").value, fv = $("fcat").value;
+    const opts = CATS.map(c => `<option value="${esc(c[0])}">${esc(lang === "ar" ? c[0] : c[2])}</option>`).join("");
+    $("cat").innerHTML = `<option value="">${esc(tr().allcats)}</option>` + opts;
+    $("fcat").innerHTML = `<option value="">${esc(tr().pick)}</option>` + opts;
+    $("cat").value = cv; $("fcat").value = fv;
+  }
+  function renderCats() {
+    $("cats").innerHTML = CATS.map(c => {
+      const n = PROJECTS.filter(p => p.category === c[0]).length;
+      return `<button class="cc${$("cat").value === c[0] ? " on" : ""}" data-c="${esc(c[0])}"><span class="ic">${c[1]}</span><b>${esc(lang === "ar" ? c[0] : c[2])}</b><small>${tr().sell(n)}</small></button>`;
+    }).join("");
+    $("cats").querySelectorAll(".cc").forEach(b => b.onclick = () => {
+      $("cat").value = $("cat").value === b.dataset.c ? "" : b.dataset.c; render();
+    });
+  }
+  function render() {
+    renderCats();
+    const T = tr(), q = $("q").value.trim().toLowerCase(), cat = $("cat").value;
+    const res = PROJECTS.filter(p => {
+      const cf = (CATS.find(k => k[0] === p.category) || [])[2] || "";
+      return (!cat || p.category === cat) &&
+        (!q || [p.name, p.category, cf, p.description, ...p.products.map(x => x.name)].join(" ").toLowerCase().includes(q));
+    }).sort((a, b) => isFeatured(b) - isFeatured(a));
+
+    $("list").innerHTML = res.length ? res.map(p => {
+      const f = isFeatured(p);
+      const prods = f
+        ? `<div class="products">${p.products.map(x => `
+            <div class="p"><div class="img">${x.image ? `<img src="${esc(x.image)}" alt="${esc(x.name)}" loading="lazy">` : esc(x.emoji || "📦")}</div>
+            ${esc(x.name)}<small>${esc(x.price)}</small></div>`).join("")}</div>`
+        : `<div class="plain">${T.prods} ${p.products.map(x => esc(x.name)).join(lang === "ar" ? "، " : ", ")}</div>`;
+      const fb = /^https?:\/\//.test(p.facebook || "") ? `<a class="btn ghost" href="${esc(p.facebook)}" target="_blank" rel="noopener">${T.fb}</a>` : "";
+      const ctl = admin ? `<div class="adminbox">
+          <span>${f ? "مميز حتى " + esc(p.featured_until) : "غير مميز"}</span>
+          <button class="btn honey" data-on="1" data-id="${esc(p.id)}">${f ? "تمديد 30 يومًا" : "تفعيل 30 يومًا"}</button>
+          ${f ? `<button class="btn red" data-on="0" data-id="${esc(p.id)}">إيقاف</button>` : ""}
+          <button class="btn ghost" data-act="code" data-id="${esc(p.id)}">إصدار كود</button>
+          <button class="btn red" data-act="del" data-id="${esc(p.id)}">حذف البائع</button></div>` : "";
+      return `<article class="card${f ? " featured" : ""}">
+        <div class="top"><div><h2>${esc(p.name)}</h2><div class="cat">${esc(cname(p.category))}</div></div>${f ? `<span class="badge">${T.feat}</span>` : ""}</div>
+        <div>${esc(p.description)}</div>${prods}
+        <div class="plain">${T.deliv} ${p.delivery ? T.yes + (p.areas ? " (" + esc(p.areas) + ")" : "") : T.no}</div>
+        <div class="actions"><a class="btn honey" href="tel:${esc(p.phone)}">${T.call}</a>${fb}<a class="rep" href="https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(T.wa_rep(p.name))}" target="_blank" rel="noopener">${T.report}</a></div>${ctl}</article>`;
+    }).join("") : `<div class="empty">${PROJECTS.length ? T.empty : T.none}</div>`;
+    $("list").querySelectorAll(".adminbox button").forEach(b => b.onclick = () => b.dataset.act === "code" ? issueCode(b.dataset.id, b) : b.dataset.act === "del" ? deleteSeller(b.dataset.id, b) : toggle(b.dataset.id, b.dataset.on === "1", b));
+  }
+  $("q").addEventListener("input", render);
+  $("cat").addEventListener("change", render);
+
+  // ===== نموذج تسجيل البائع (يرسل الطلب إليك عبر واتساب) =====
+  const dlg = $("regDlg"), bd = $("boostDlg"), NP = 5;
+  $("fprods").innerHTML = Array.from({length: NP}, (_, i) => `
+    <div class="prow">
+      <label class="pic"><input type="file" accept="image/*" data-i2="${i}" hidden><span>📷</span></label>
+      <div class="pf"><input data-ph="ph_pn" data-n="${i}" maxlength="60"><input data-ph="ph_pp" data-p="${i}" maxlength="40"></div>
+    </div>`).join("");
+  $("fprods").querySelectorAll("input[type=file]").forEach(inp => inp.onchange = () => {
+    const f = inp.files[0], box = inp.parentElement;
+    if (f) { box.style.backgroundImage = `url(${URL.createObjectURL(f)})`; box.querySelector("span").style.display = "none"; }
+  });
+  $("fdel").onchange = () => $("fareasWrap").style.display = $("fdel").value === "yes" ? "block" : "none";
+  $("joinBtn").onclick = () => { $("fdone").style.display = "none"; dlg.showModal(); };
+  $("fclose").onclick = () => dlg.close();
+  $("r2b").onclick = e => { e.preventDefault(); dlg.close(); $("bmsg").style.display = "none"; bd.showModal(); };
+  $("b2r").onclick = e => { e.preventDefault(); bd.close(); $("fdone").style.display = "none"; dlg.showModal(); };
+  $("bclose").onclick = () => bd.close();
+  $("regForm").onsubmit = e => {
+    e.preventDefault();
+    const v = id => $(id).value.trim(), q1 = s => $("fprods").querySelector(s);
+    const prods = []; let photos = 0;
+    for (let i = 0; i < NP; i++) {
+      const n = q1(`[data-n="${i}"]`).value.trim(); if (!n) continue;
+      const pr = q1(`[data-p="${i}"]`).value.trim(), img = q1(`[data-i2="${i}"]`).files.length > 0;
+      if (img) photos++;
+      prods.push(`${prods.length + 1}. ${n}${pr ? " - " + pr : ""}${img ? " (صورته سأرسلها)" : ""}`);
+    }
+    if (!prods.length) return alert(tr().alertProd);
+    const lines = ["السلام عليكم، طلب تسجيل مشروع جديد:",
+      "اسم البائع: " + v("fname"), "الفئة: " + v("fcat"),
+      v("fdesc") && "الوصف: " + v("fdesc"),
+      "الهاتف: " + v("fphone"),
+      v("ffb") && "فيسبوك: " + v("ffb"),
+      "التوصيل: " + ($("fdel").value === "yes" ? "متوفر" + (v("fareas") ? " (" + v("fareas") + ")" : "") : "غير متوفر"),
+      "المنتجات:", ...prods].filter(Boolean);
+    window.open("https://wa.me/" + WHATSAPP_NUMBER + "?text=" + encodeURIComponent(lines.join("\n")), "_blank");
+    const d = $("fdone"); d.textContent = tr().done(photos); d.style.display = "block";
+  };
+
+  // ===== الظهور المميز بالكود (يظهر للبائع على جهازه فقط) =====
+  const CODES = JSON.parse($("codes").textContent);
+  $("bproj").innerHTML = PROJECTS.map(p => `<option value="${esc(p.id)}">${esc(p.name)}</option>`).join("");
+  const updBwa = () => { const p = PROJECTS.find(x => x.id === $("bproj").value);
+    $("bwa").href = "https://wa.me/" + WHATSAPP_NUMBER + "?text=" + encodeURIComponent(`السلام عليكم، أريد تفعيل الظهور المميز للبائع «${p ? p.name : ""}» (100 دج / 30 يومًا).`); };
+  $("bproj").onchange = updBwa; updBwa();
+  const sha256 = async t => [...new Uint8Array(await crypto.subtle.digest("SHA-256", new TextEncoder().encode(t)))].map(x => x.toString(16).padStart(2, "0")).join("");
+  function showB(t, ok) { const m = $("bmsg"); m.textContent = t; m.className = ok ? "ok" : "err"; m.style.display = "block"; }
+  $("boostForm").onsubmit = async e => {
+    e.preventDefault();
+    const code = $("bcode").value.trim().toUpperCase(); if (!code) return;
+    const fails = +(load("fails") || 0);
+    if (fails >= 5) return showB(tr().b_many, false);
+    const id = $("bproj").value, h = await sha256(id + ":" + code);
+    if (!CODES[h]) { store("fails", fails + 1); return showB(tr().b_wrong, false); }
+    if (load("used:" + h)) return showB(tr().b_used, false);
+    let all = {}; try { all = JSON.parse(load("boost") || "{}"); } catch (err) {}
+    const cur = all[id] ? new Date(all[id] + "T23:59:59") : null, now = new Date();
+    const base = cur && cur > now ? cur : now; base.setDate(base.getDate() + 30);
+    all[id] = base.toISOString().slice(0, 10);
+    store("boost", JSON.stringify(all)); store("used:" + h, "1"); $("bcode").value = "";
+    render(); showB(tr().b_ok(all[id]), true);
+  };
+
+  // ===== تبديل اللغة =====
+  function applyLang() {
+    const T = tr();
+    document.documentElement.lang = lang; document.documentElement.dir = lang === "ar" ? "rtl" : "ltr";
+    document.title = T.brand + " | TEBESSA";
+    document.querySelectorAll("[data-i]").forEach(e => { if (typeof T[e.dataset.i] === "string") e.textContent = T[e.dataset.i]; });
+    document.querySelectorAll("[data-ph]").forEach(e => e.placeholder = T[e.dataset.ph]);
+    $("langBtn").textContent = lang === "ar" ? "Français" : "العربية";
+    $("compBtn").href = "https://wa.me/" + WHATSAPP_NUMBER + "?text=" + encodeURIComponent(T.wa_comp);
+    buildCats(); render();
+  }
+  $("langBtn").onclick = () => { lang = lang === "ar" ? "fr" : "ar"; store("lang", lang); applyLang(); };
+  applyLang();
+</script>
+</body>
+</html>
